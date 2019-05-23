@@ -1,5 +1,20 @@
 # Symfony docker starter
 
+## What does it containts
+
+- Apache server (Available on port 80)
+- Php fpm
+- Mysql
+- Redis (Available on port 6379)
+- phpmyadmin (Available on port 8080)
+- maildev (Available on port 8001)
+
+## Mysql credentials
+
+- Database : sf4
+- Login : sf4
+- Password : sf4
+
 ## Installing symfony project
 
 To install symfony project run these commands :
