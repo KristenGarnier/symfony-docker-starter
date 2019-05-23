@@ -7,7 +7,7 @@ services:
           - 80:80
         volumes:
           - .docker/config/vhosts:/etc/apache2/sites-enabled
-          - ./public:/home/wwwroot/sf4/public # decomment when symfony is installed
+          - ./symfony/public:/home/wwwroot/sf4/public # decomment when symfony is installed
         depends_on:
           - php
 
@@ -27,17 +27,18 @@ services:
         build: .docker/php
         container_name: sf4_php
         volumes:
-         # - ./:/home/wwwroot/sf4 #only for sf install
+          - ./symfony:/home/wwwroot/sf4 #only for sf install
+          - ./sf_install.sh:/home/wwwroot/sf4/sf_install.sh
           - composervendor:/home/wwwroot/sf4/vendor
-          - ./bin:/home/wwwroot/sf4/bin # decomment when symfony is installed
-          - ./config:/home/wwwroot/sf4/config  # decomment when symfony is installed
-          - ./public:/home/wwwroot/sf4/public # decomment when symfony is installed
-          - ./src:/home/wwwroot/sf4/src # decomment when symfony is installed
-          - ./.env:/home/wwwroot/sf4/.env # decomment when symfony is installed
-          - ./var/log:/home/wwwroot/sf4/log:cached # decomment when symfony is installed
-          - ./composer.json:/home/wwwroot/sf4/composer.json # decomment when symfony is installed
-          - ./composer.lock:/home/wwwroot/sf4/composer.lock # decomment when symfony is installed
-          - ./sf_install.sh:/home/wwwroot/sf4/sf_install.sh # decomment when symfony is installed
+         # - ./symfony/bin:/home/wwwroot/sf4/bin # decomment when symfony is installed
+         # - ./symfony/config:/home/wwwroot/sf4/config  # decomment when symfony is installed
+         # - ./symfony/public:/home/wwwroot/sf4/public # decomment when symfony is installed
+         # - ./symfony/src:/home/wwwroot/sf4/src # decomment when symfony is installed
+         # - ./symfony/.env:/home/wwwroot/sf4/.env # decomment when symfony is installed
+         # - ./symfony/var/log:/home/wwwroot/sf4/log:cached # decomment when symfony is installed
+         # - ./symfony/composer.json:/home/wwwroot/sf4/composer.json # decomment when symfony is installed
+         # - ./symfony/composer.lock:/home/wwwroot/sf4/composer.lock # decomment when symfony is installed
+         # - ./symfony/sf_install.sh:/home/wwwroot/sf4/sf_install.sh # decomment when symfony is installed
         environment:
           - maildev_host=sf4_maildev
         depends_on:
